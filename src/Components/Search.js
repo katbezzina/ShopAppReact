@@ -19,7 +19,7 @@ const Search = ({ fetchedData }) => {
     <div>
       <input
         type="search"
-        placeholder="Search for product..."
+        placeholder="Filter for product..."
         onChange={handleChange}
         value={searchInput}
       />

@@ -14,7 +14,7 @@ const Products = ({ fetchedData }) => {
               <p>€ {products.price}</p>
             </div>
             <div>
-              <button>See details</button>
+              <button>See product details</button>
               <div>
                 <button><FaRegHeart /></button>
                 <button><BsCart4 /></button>

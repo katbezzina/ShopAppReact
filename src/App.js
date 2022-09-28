@@ -17,7 +17,7 @@ function App() {
   }, [api]);
 
   return <div>
-    <div className="App">Raect</div>
+    <div className="App">Shop App</div>
     <Search fetchedData={fetchedData}/>
     <div>
       <Products fetchedData={ fetchedData } />
