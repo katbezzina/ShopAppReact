@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import Products from "./Components/Products"
+import Search from "./Components/Search"
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+  let [fetchedData, setFetchedData] = useState([]);
+  let api = `https://fakestoreapi.com/products`;
+
+  useEffect(() => {
+    (async function () {
+      let data = await fetch(api).then((results) => results.json());
+      setFetchedData(data);
+    })();
+    //watching the api
+  }, [api]);
+
+  return <div>
+    <div className="App">Raect</div>
+    <Search fetchedData={fetchedData}/>
+    <div>
+      <Products fetchedData={ fetchedData } />
     </div>
-  );
+  </div>;
 }
 
 export default App;
