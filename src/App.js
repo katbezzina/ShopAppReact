@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Products from "./Components/Products"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap"
 import Search from "./Components/Search"
-import "./App.css";
 
 function App() {
 
@@ -17,11 +17,9 @@ function App() {
   }, [api]);
 
   return <div>
-    <div className="App">Shop App</div>
-    <Search fetchedData={fetchedData}/>
-    <div>
-      <Products fetchedData={ fetchedData } />
-    </div>
+    <div>Navbar</div>
+    <Search details={fetchedData} />
+    <div>Footer</div>
   </div>;
 }
 
