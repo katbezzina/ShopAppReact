@@ -1,0 +1,12 @@
+.searchButton{
+    padding: 30px;
+    text-align: center;
+    background-image: linear-gradient(to right, #ffc107c6, rgba(169, 108, 255, 0.746));
+}
+
+.searchBar{
+    padding: 10px;
+    border-radius: 50px;
+    border-color: #ffc1071c;
+    text-align: center;
+}

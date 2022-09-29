@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SearchList from "./SearchList";
+import "../Style/Search.css"
 
 const Search = ({ details }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -20,11 +21,11 @@ const Search = ({ details }) => {
   }
   return (
     <section>
-      <div>
+      <div className="searchButton"> 
         <input
           type="search"
-          placeholder="Filter for product..."
-          onChange={handleChange}
+          placeholder="Search for..."
+          onChange={handleChange} className="searchBar"
           // value={searchInput}
         />
       </div>

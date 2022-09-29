@@ -1,0 +1,30 @@
+.navbarContainer{
+    display: flex;
+    justify-content: flex-start;;
+    align-items: center;
+    padding: 10px;
+}
+
+.collapseNavbar{
+    padding: 15px;
+}
+
+.loginButton{
+    background-color: rgb(169, 108, 255);
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.843);
+    border-radius: 100px;
+    text-align: center;
+}
+
+.registerButton {
+    background-color: rgba(169, 108, 255, 0.141);
+    padding: 10px;
+    color: rgba(53, 52, 52, 0.843);
+    border-radius: 100px;
+    text-align: center;
+}
+
+.navbarButtons{
+    gap: 20px;
+}

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap"
+import Navbar from "./Components/Navbar"
 import Search from "./Components/Search"
+
 
 function App() {
 
@@ -17,7 +19,7 @@ function App() {
   }, [api]);
 
   return <div>
-    <div>Navbar</div>
+    <Navbar />
     <Search details={fetchedData} />
     <div>Footer</div>
   </div>;
