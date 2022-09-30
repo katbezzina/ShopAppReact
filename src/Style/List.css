@@ -1,3 +1,7 @@
+.undoLink:link{
+    text-decoration: none;
+}
+
 .cardGrid{
     display: flex;
     flex-direction: row;
@@ -42,19 +46,19 @@
     color: rgb(169, 108, 255);
     padding: 10px;
     border-radius: 100px;
-    width: 40vw;
+    width: 120px;
 }
 
 .purpleFill{
     border-color: rgba(248, 247, 249, 0);
-    background-color: rgb(169, 108, 255);
+    background-color:rgba(169, 108, 255, 0.589);;
     color: white;
     padding: 10px;
     border-radius: 250px;
 }
 
 .purpleFill:hover {
-    color: rgb(169, 108, 255);
+    color: rgba(169, 108, 255, 0.589);;
     background-color: white;
 }
 
@@ -68,5 +72,5 @@
 }
 
 .cardOutline:hover{
-    border-color: rgba(169, 108, 255, 0.452);
+    border-color: rgba(78, 44, 125, 0.452);
 }

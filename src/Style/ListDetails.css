@@ -1,0 +1,9 @@
+.detailCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 75vh;
+    margin-left: 10vw;
+    margin-top: 10vh;
+}

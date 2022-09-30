@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
@@ -23,9 +24,11 @@ const ListItem = ({ product }) => {
           {product.category}
         </Badge>
         <div className="listButton">
-          <button className="purpleOutline" size="sm">
-            View details
-          </button>
+          <Link to={`${product.id}`}>
+            <button className="purpleOutline" size="sm">
+              View details
+            </button>
+          </Link>
           <button className="purpleFill">
             <BsFillHeartFill />
           </button>

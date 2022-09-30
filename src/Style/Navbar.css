@@ -7,14 +7,28 @@
 
 .collapseNavbar{
     padding: 15px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .loginButton{
-    background-color: rgb(169, 108, 255);
+    background-color: rgba(169, 108, 255, 0.589);
     padding: 10px;
     color: rgba(255, 255, 255, 0.843);
     border-radius: 100px;
     text-align: center;
+    width: 120px;
+    align-items: center;
 }
 
 .registerButton {
@@ -23,8 +37,21 @@
     color: rgba(53, 52, 52, 0.843);
     border-radius: 100px;
     text-align: center;
+    width: 120px;
 }
 
 .navbarButtons{
     gap: 20px;
+}
+
+.noUnderline:link{
+    text-decoration: none;
+}
+.noUnderline{
+        color: rgb(90, 67, 123);
+}
+
+.noUnderline:hover{
+    font-weight: 800;
+    color: rgb(90, 67, 123);
 }
