@@ -1,17 +1,17 @@
-import React from "react";
+// import React from "react";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import ListItem from "./ListItem";
+// import "../Style/List.css";
 
-import ListItem from "./ListItem";
+// const List = ({ fetchedData }) => {
+//   return (
+//     <div>
+//       {fetchedData.map((product) => {
+//         return <ListItem key={product.id} product={product} />;
+//       })}
+//     </div>
+//   );
+// };
 
-import Card from "react-bootstrap/Card";
-
-const List = ({ fetchedData }) => {
-  return (
-    <div>
-      {fetchedData.map((product) => {
-        return <ListItem key={product.id} product={product} />;
-      })}
-    </div>
-  );
-};
-
-export default List;
+// export default List;
