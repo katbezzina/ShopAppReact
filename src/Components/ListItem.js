@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
-import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
+import { BsFillHeartFill } from "react-icons/bs";
 import "../Style/List.css";
 
 const ListItem = ({ product }) => {
@@ -31,9 +31,6 @@ const ListItem = ({ product }) => {
           </Link>
           <button className="purpleFill">
             <BsFillHeartFill />
-          </button>
-          <button className="purpleFill">
-            <BsFillCartFill />
           </button>
         </div>
       </Card.Body>
