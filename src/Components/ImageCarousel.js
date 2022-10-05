@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import Carousel from "react-bootstrap/Carousel";
+
 import Loading from "./Loading";
-import "../Style/ListDetails.css";
+import "../Style/ProductModal.css";
 
 function ImageCarousel() {
   const handleSelect = (selectedIndex, e) => {
@@ -20,7 +22,6 @@ function ImageCarousel() {
     (async function () {
       let data = await fetch(api).then((results) => results.json());
       setFetchedData(data);
-      console.log("data", data);
     })();
   }, [api]);
 

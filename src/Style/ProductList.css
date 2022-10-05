@@ -1,0 +1,76 @@
+.undoLink:link{
+    text-decoration: none;
+}
+
+.cardGrid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.imgSize{
+    width: auto;
+    height: 320px;
+    padding: 30px;
+}
+
+.mediumText{
+    font-size: medium;
+    color: rgb(64, 63, 63);
+}
+
+.smallText {
+    font-size: small;
+}
+
+.pillBadge {
+    position: absolute;
+    top: 10px;
+    right: 17px;
+}
+
+.listButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 3px;
+}
+
+.purpleOutline{
+    border-color: rgba(169, 108, 255, 0.566);
+    background-color: white;
+    color: rgb(169, 108, 255);
+    padding: 10px;
+    border-radius: 100px;
+    width: 120px;
+}
+
+.purpleFill{
+    border-color: rgba(248, 247, 249, 0);
+    background-color:rgba(169, 108, 255, 0.589);;
+    color: white;
+    padding: 10px;
+    border-radius: 250px;
+}
+
+.purpleFill:hover {
+    color: rgba(169, 108, 255, 0.589);;
+    background-color: white;
+}
+
+.purpleOutline:hover {
+    box-shadow: 2px 4px rgba(169, 108, 255, 0.778);
+}
+.cardOutline{
+    border-color: rgba(114, 113, 113, 0.181);
+    border-width: 2px;
+    border-radius: 15px;
+}
+
+.cardOutline:hover{
+    border-color: rgba(78, 44, 125, 0.452);
+}

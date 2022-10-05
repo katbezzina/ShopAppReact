@@ -1,0 +1,34 @@
+.detailCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    padding: 8vh;
+}
+
+.productImageCarousel{
+    width: 270px;
+    height: 320px;
+    text-align: center;
+}
+
+.carouselColor{
+    background-color:rgba(0, 0, 0, 0.175);
+    border-radius: 10px;;
+    text-align: center;
+
+}
+
+.productTextContainer{
+    margin-top: 5vh;
+    padding: 10px;
+}
+
+.closeButton{
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+    color: #ffc107c6;
+    text-align: start;
+    font-size:xx-large;
+    margin-bottom: 5vh;
+}

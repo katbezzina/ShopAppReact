@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BsArrowLeftSquareFill } from "react-icons/bs";
-import "../Style/ListDetails.css";
+import { FaArrowLeft } from "react-icons/fa";
+import "../Style/ProductModal.css";
 
 function CloseButton() {
   let navigate = useNavigate();
   return (
     <>
       <button className="closeButton" onClick={() => navigate(-1)}>
-        <BsArrowLeftSquareFill />
+        <FaArrowLeft />
       </button>
     </>
   );

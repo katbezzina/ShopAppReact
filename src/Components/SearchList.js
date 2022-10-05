@@ -1,10 +1,10 @@
 import React from "react";
-import ListItem from "./ListItem";
-import "../Style/List.css";
+import ProductList from "./ProductList";
+import "../Style/ProductList.css";
 
 function SearchList({ filteredProducts }) {
   const filtered = filteredProducts.map((product) => (
-    <ListItem key={product.id} product={product} />
+    <ProductList key={product.id} product={product} />
   ));
 
   return <div className="cardGrid">{filtered}</div>;
