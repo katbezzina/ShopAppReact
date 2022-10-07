@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import "../Style/Login.css";
 
 const Login = () => {
   // const { login } = useContext(AuthContext);
@@ -23,51 +24,53 @@ const Login = () => {
   // };
   return (
     <div className="LoginForm">
-      <div className="login-title">
-        <h2>Login</h2>
-      </div>
+      <div className="LoginBox">
+        <Form>
+          <Form.Group>
+            <FloatingLabel
+              controlId="floatingInput"
+              label="E-mail address"
+              className="mb-3"
+            >
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="E-mail address"
+                value={email}
+                onChange={handleEmailChange}
+                className="transparent"
+              />
+            </FloatingLabel>
 
-      <Form className="form-container">
-        <Form.Group>
-          <FloatingLabel
-            controlId="floatingInput"
-            label="E-mail"
-            className="mb-3"
+            <FloatingLabel controlId="floatingPassword" label="Password">
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+                className="transparent"
+              />
+            </FloatingLabel>
+          </Form.Group>
+          <button
+            block="true"
+            type="submit"
+            // onClick={handleLogin}
+            className="mb-3 LoginButton"
           >
-            <Form.Control
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </FloatingLabel>
-
-          <FloatingLabel controlId="floatingPassword" label="Password">
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </FloatingLabel>
-        </Form.Group>
-        <Button
-          block="true"
-          variant="warning"
-          type="submit"
-          // onClick={handleLogin}
-          className="mb-2"
-        >
-          Login
-        </Button>
+            Login
+          </button>
+        </Form>
         <hr />
-        <p>Do not have an account yet?</p>
-        <Button block="true" type="submit" className="btn-sign-up">
-          Register
-        </Button>
-      </Form>
+        <div className="registerBox">
+          <NavLink to="/Register">
+            <button block="true" type="submit" className="signupButton">
+              Create New Account
+            </button>
+          </NavLink>
+        </div>
+      </div>
     </div>
   );
 };

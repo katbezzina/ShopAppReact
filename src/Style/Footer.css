@@ -1,8 +1,11 @@
 .Footer{
-    position: relative;
+    position: fixed;
+    align-items: center;
     text-align: center;
     color: rgba(78, 49, 119, 0.746);
     background-color: rgba(227, 226, 226, 0.495);
-    padding: 20px;
-    margin-top: 20px;
+    bottom: 0;
+    padding: 10px;
+    width: 100vw;
+
 }

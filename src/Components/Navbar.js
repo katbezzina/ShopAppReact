@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { BsDroplet, BsChatDots } from "react-icons/bs";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineShop } from "react-icons/ai";
 import "../Style/Navbar.css";
 
 function navbar() {
@@ -22,10 +22,10 @@ function navbar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto collapseNavbar">
             <NavLink to="/" className="noUnderline">
-              <AiOutlineHome /> Home
+              <AiOutlineShop /> Shop <AiOutlineShop />
             </NavLink>
             <NavLink to="/Chat" className="noUnderline">
-              <BsChatDots /> Chat
+              <BsChatDots /> Chat <BsChatDots />
             </NavLink>
           </Nav>
           <Nav className="navbarButtons">

@@ -24,6 +24,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
@@ -43,7 +44,6 @@ const Home = () => {
   return (
     <div>
       <Search page="/" details={fetchedData} />
-      <Footer />
     </div>
   );
 };
