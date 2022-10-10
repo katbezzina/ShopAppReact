@@ -4,16 +4,6 @@
 
 // const Home = () => {
 //   const { fetchedData, setFilter } = useContext(ProductsContext);
-//   //   let [fetchedData, setFetchedData] = useState([]);
-//   //   let api = `https://fakestoreapi.com/products`;
-
-//   //   useEffect(() => {
-//   //     (async function () {
-//   //       let data = await fetch(api).then((results) => results.json());
-//   //       setFetchedData(data);
-//   //     })();
-//   //     //watching the api
-//   //   }, [api]);
 
 //   function handleChange(event) {
 //     let inputValue = event.target.value;

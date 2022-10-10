@@ -9,8 +9,6 @@
 // import { ProductsContext } from "../Context/ProductsContext";
 
 // const ProductList = () => {
-//   // const product = props.product;
-//   // product is a prop
 
 //   const { filter, fetchData } = useContext(ProductsContext);
 
