@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { MdAccountCircle } from "react-icons/md";
 import "../Style/Login.css";
 
 const Register = () => {
@@ -25,6 +26,9 @@ const Register = () => {
 
   return (
     <div className="LoginForm">
+      <h1>
+        Create a new <MdAccountCircle />
+      </h1>
       <div className="LoginBox">
         <Form>
           <Form.Group>

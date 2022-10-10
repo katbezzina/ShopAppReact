@@ -55,7 +55,7 @@
 
 .registrationButton{
     border-color: rgba(169, 108, 255, 0.566);
-    background-color: rgba(255, 255, 255, 0.905);
+    background-color: rgba(255, 255, 255, 0.805);
     color: rgb(169, 108, 255);
     padding: 10px;
     margin-top: 15px;
@@ -66,5 +66,10 @@
 .registrationButton:hover {
     font-weight: 600;
     box-shadow: 2px 4px rgba(169, 108, 255, 0.778);
+}
+
+h1{
+    color: rgba(255, 255, 255, 0.953);
+    padding: 15px;
 }
 
