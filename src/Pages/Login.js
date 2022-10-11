@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -9,6 +9,8 @@ const Login = () => {
   // const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,34 +28,35 @@ const Login = () => {
   return (
     <div className="LoginForm">
       <h1>
-        Login to your <MdAccountCircle />
+        LogIn to your <MdAccountCircle />
       </h1>
       <div className="LoginBox">
         <Form>
           <Form.Group>
             <FloatingLabel
-              controlId="floatingInput"
+              controlId="email"
               label="E-mail address"
               className="mb-3"
             >
               <Form.Control
                 type="email"
                 name="email"
-                placeholder="E-mail address"
-                value={email}
-                onChange={handleEmailChange}
+                ref={emailRef}
+                // value={email}
+                // onChange={handleEmailChange}
                 className="transparent"
+                required
               />
             </FloatingLabel>
-
-            <FloatingLabel controlId="floatingPassword" label="Password">
+            <FloatingLabel controlId="password" label="Password">
               <Form.Control
                 type="password"
                 name="password"
-                placeholder="Password"
-                value={password}
-                onChange={handlePasswordChange}
+                ref={passwordRef}
+                // value={password}
+                // onChange={handlePasswordChange}
                 className="transparent"
+                required
               />
             </FloatingLabel>
           </Form.Group>

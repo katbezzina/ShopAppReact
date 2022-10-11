@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Search from "../Components/Search";
+import ProductList from "../Components/ProductList";
+import { ProductsContext } from "../Context/ProductsContext";
 
 const Home = () => {
-  let [fetchedData, setFetchedData] = useState([]);
-  let api = `https://fakestoreapi.com/products`;
+  const { fetchedData, setFilter } = useContext(ProductsContext);
 
-  useEffect(() => {
-    (async function () {
-      let data = await fetch(api).then((results) => results.json());
-      setFetchedData(data);
-    })();
-    //watching the api
-  }, [api]);
+  function handleChange(event) {
+    let inputValue = event.target.value;
+    let searchedResult = fetchedData.filter((product) => {
+      return product.title.toLowerCase().includes(inputValue);
+    });
+    console.log("inputValue", inputValue);
+    console.log("searchedResult", searchedResult);
+    setFilter(searchedResult);
+  }
 
   return (
     <div>
-      <Search page="/" details={fetchedData} />
+      <Search page="/" handleChange={handleChange} />
+      <ProductList />
     </div>
   );
 };

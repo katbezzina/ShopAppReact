@@ -8,15 +8,13 @@ import { BsFillHeartFill } from "react-icons/bs";
 import ReactStars from "react-rating-stars-component";
 
 import ImageCarousel from "./ImageCarousel";
-import CloseButton from "./CloseButton";
+import BackButton from "./BackButton";
 import Loading from "./Loading";
 import "../Style/ProductModal.css";
 
 const ProductModal = () => {
   let { id } = useParams();
   let [fetchedData, setFetchedData] = useState(null);
-
-  //fetchedData destructuring
 
   let api = `https://fakestoreapi.com/products/${id}`;
 
@@ -37,7 +35,7 @@ const ProductModal = () => {
       <Container key={id} className="detailCard">
         <Row>
           <Row>
-            <CloseButton />
+            <BackButton />
           </Row>
           <Col>
             <ImageCarousel />

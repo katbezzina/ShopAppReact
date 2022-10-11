@@ -1,23 +1,51 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Alert from "react-bootstrap/Alert";
 import { MdAccountCircle } from "react-icons/md";
+import { useAuth } from "../Context/AuthContext";
 import "../Style/Login.css";
 
 const Register = () => {
   // const { register } = useContext(AuthContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { register } = useAuth();
+  //empty string, no error by default
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handlePasswordChange = (e) => {
-    console.log(password);
-    setPassword(e.target.value);
-  };
+  async function handleSubmit(e) {
+    //preventing form from refreshing
+    e.preventDefault();
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
+    try {
+      setError("");
+      //to avoid from creating multiple accounts using signup
+      setLoading(true);
+      await register(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to create your account");
+    }
+    setLoading(false);
+  }
+
+  // const handleEmailChange = (e) => {
+  //   setEmail(e.target.value);
+  // };
+
+  // const handlePasswordChange = (e) => {
+  //   console.log(password);
+  //   setPassword(e.target.value);
+  // };
 
   // const handleRegister = (e) => {
   // 	e.preventDefault()
@@ -29,39 +57,57 @@ const Register = () => {
       <h1>
         Create a new <MdAccountCircle />
       </h1>
+      {error && <Alert variant="warning">{error}</Alert>}
       <div className="LoginBox">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group>
             <FloatingLabel
-              controlId="floatingInput"
+              controlId="email"
               label="E-mail address"
               className="mb-3"
             >
               <Form.Control
                 type="email"
                 name="email"
-                placeholder="E-mail address"
-                value={email}
-                onChange={handleEmailChange}
+                ref={emailRef}
+                // value={email}
+                // onChange={handleEmailChange}
                 className="transparent"
+                required
               />
             </FloatingLabel>
 
-            <FloatingLabel controlId="floatingPassword" label="Password">
+            <FloatingLabel controlId="password" label="Password">
               <Form.Control
                 type="password"
                 name="password"
-                placeholder="Password"
-                value={password}
-                onChange={handlePasswordChange}
+                ref={passwordRef}
+                // value={password}
+                // onChange={handlePasswordChange}
                 className="transparent"
+                required
+              />
+            </FloatingLabel>
+
+            <FloatingLabel
+              controlId="password-confirm"
+              label="Confirm Password"
+            >
+              <Form.Control
+                type="password"
+                name="password"
+                ref={passwordConfirmRef}
+                // value={password}
+                // onChange={handlePasswordChange}
+                className="transparent"
+                required
               />
             </FloatingLabel>
           </Form.Group>
+
           <button
-            block="true"
             type="submit"
-            // onClick={handleLogin}
+            disabled={loading}
             className="mb-3 registrationButton"
           >
             Create New Account
@@ -70,7 +116,7 @@ const Register = () => {
         <hr />
         <div className="registerBox">
           <NavLink to="/Login">
-            <button block="true" type="submit" className="LoginButton">
+            <button type="submit" className="LoginButton">
               Login
             </button>
           </NavLink>

@@ -9,23 +9,26 @@ import Home from "./Pages/Home";
 import Chat from "./Pages/Chat";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-// import { ProductsContextProvider } from "./Context/ProductsContext";
+import { ProductsContextProvider } from "./Context/ProductsContext";
+import { AuthProvider } from "./Context/AuthContext";
 
 function App() {
   return (
-    // <ProductsContextProvider>
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<ProductModal />} />
-        <Route path="/Chat" element={<Chat />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
-      </Routes>
-      <Footer />
-    </Router>
-    // </ProductsContextProvider>
+    <AuthProvider>
+      <ProductsContextProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/:id" element={<ProductModal />} />
+            <Route path="/Chat" element={<Chat />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Register" element={<Register />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ProductsContextProvider>
+    </AuthProvider>
   );
 }
 
