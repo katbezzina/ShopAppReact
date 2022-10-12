@@ -8,9 +8,6 @@ import { useAuth } from "../Context/AuthContext";
 import "../Style/Login.css";
 
 const Register = () => {
-  // const { register } = useContext(AuthContext);
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -18,7 +15,8 @@ const Register = () => {
   const { register } = useAuth();
   //empty string, no error by default
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+
+  console.log(error)
 
   async function handleSubmit(e) {
     //preventing form from refreshing
@@ -30,27 +28,11 @@ const Register = () => {
     try {
       setError("");
       //to avoid from creating multiple accounts using signup
-      setLoading(true);
-      await register(emailRef.current.value, passwordRef.current.value);
+      register(emailRef.current.value, passwordRef.current.value);
     } catch {
       setError("Failed to create your account");
     }
-    setLoading(false);
   }
-
-  // const handleEmailChange = (e) => {
-  //   setEmail(e.target.value);
-  // };
-
-  // const handlePasswordChange = (e) => {
-  //   console.log(password);
-  //   setPassword(e.target.value);
-  // };
-
-  // const handleRegister = (e) => {
-  // 	e.preventDefault()
-  // 	register(email, password)
-  // }
 
   return (
     <div className="LoginForm">
@@ -99,7 +81,7 @@ const Register = () => {
                 ref={passwordConfirmRef}
                 // value={password}
                 // onChange={handlePasswordChange}
-                className="transparent"
+                className="transparent mt-3"
                 required
               />
             </FloatingLabel>
@@ -107,7 +89,7 @@ const Register = () => {
 
           <button
             type="submit"
-            disabled={loading}
+            // disabled={loading}
             className="mb-3 registrationButton"
           >
             Create New Account

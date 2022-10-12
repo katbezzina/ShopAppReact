@@ -7,19 +7,19 @@ import "../Style/Login.css";
 
 const Login = () => {
   // const { login } = useContext(AuthContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  // const handleEmailChange = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
-  const handlePasswordChange = (e) => {
-    console.log(password);
-    setPassword(e.target.value);
-  };
+  // const handlePasswordChange = (e) => {
+  //   console.log(password);
+  //   setPassword(e.target.value);
+  // };
 
   // const handleLogin = (e) => {
   //   e.preventDefault();
