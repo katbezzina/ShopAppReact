@@ -13,7 +13,6 @@ const Register = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { register } = useAuth();
-  //empty string, no error by default
   const [error, setError] = useState("");
 
   console.log(error)
@@ -86,14 +85,13 @@ const Register = () => {
               />
             </FloatingLabel>
           </Form.Group>
-
           <button
             type="submit"
             // disabled={loading}
             className="mb-3 registrationButton"
           >
             Create New Account
-          </button>
+            </button>
         </Form>
         <hr />
         <div className="registerBox">

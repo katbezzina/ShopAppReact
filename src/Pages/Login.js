@@ -1,37 +1,46 @@
 import React, { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
+
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Alert from "react-bootstrap/Alert";
 import { MdAccountCircle } from "react-icons/md";
 import "../Style/Login.css";
 
+import { useAuth } from "../Context/AuthContext";
+
 const Login = () => {
-  // const { login } = useContext(AuthContext);
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const emailRef = useRef();
   const passwordRef = useRef();
+  const { login } = useAuth();
+  const [isShown, setIsSHown] = useState(false);
+  const [error, setError] = useState("");
 
-  // const handleEmailChange = (e) => {
-  //   setEmail(e.target.value);
-  // };
+  const togglePassword = () => {
+    setIsSHown((isShown) => !isShown);
+  };
 
-  // const handlePasswordChange = (e) => {
-  //   console.log(password);
-  //   setPassword(e.target.value);
-  // };
+  async function handleSubmit(e) {
+    //preventing form from refreshing
+    e.preventDefault();
 
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   login(email, password);
-  // };
+    try {
+      setError("");
+      //to avoid from creating multiple accounts using signup
+      await login(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to log in");
+    }
+    console.log(emailRef, passwordRef);
+  }
   return (
     <div className="LoginForm">
       <h1>
         LogIn to your <MdAccountCircle />
       </h1>
+      {error && <Alert variant="warning">{error}</Alert>}
       <div className="LoginBox">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group>
             <FloatingLabel
               controlId="email"
@@ -42,24 +51,31 @@ const Login = () => {
                 type="email"
                 name="email"
                 ref={emailRef}
-                // value={email}
-                // onChange={handleEmailChange}
                 className="transparent"
                 required
               />
             </FloatingLabel>
             <FloatingLabel controlId="password" label="Password">
               <Form.Control
-                type="password"
+                type={isShown ? "text" : "password"}
                 name="password"
                 ref={passwordRef}
-                // value={password}
-                // onChange={handlePasswordChange}
                 className="transparent"
                 required
               />
             </FloatingLabel>
           </Form.Group>
+          <div>
+            <label htmlFor="checkbox" className="p-grey">
+              Show password?
+            </label>
+            <input
+              id="checkbox"
+              type="checkbox"
+              checked={isShown}
+              onChange={togglePassword}
+            />
+          </div>
           <button
             block="true"
             type="submit"

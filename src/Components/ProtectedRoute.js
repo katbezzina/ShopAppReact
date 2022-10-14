@@ -5,9 +5,7 @@ import useIsAuthenticated from "../Utils/useIsAuthenticated";
 function ProtectedRoute({ children }) {
   const isAuthenticated = useIsAuthenticated();
 
-  return (
-    <>{isAuthenticated ? children : <Navigate to="/NotLogged" replace />}</>
-  );
+  return <>{isAuthenticated ? children : <Navigate to="/Login" replace />}</>;
 }
 
 export default ProtectedRoute;

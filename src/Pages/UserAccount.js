@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
 import { MdAccountCircle } from "react-icons/md";
-import { BsDroplet } from "react-icons/bs";
+import { BsDroplet, BsChatDots } from "react-icons/bs";
 import "../Style/Login.css";
 
 const UserAccount = () => {
@@ -66,6 +66,11 @@ const UserAccount = () => {
         </button>
       </Form>
       <hr />
+      <NavLink to="/Chat">
+        <button className="mb-3 signupButton">
+          <BsChatDots /> with us
+        </button>
+      </NavLink>
       <NavLink to="/Login">
         <button className="underlineButton mb-4" onClick={logout}>
           Not {user.displayName === null ? `${user.email}` : displayName}? Log

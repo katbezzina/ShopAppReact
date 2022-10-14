@@ -1,5 +1,6 @@
 .LoginForm{
     margin-top: 15vh;
+    margin-bottom: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,6 +74,11 @@ h1{
     padding: 15px;
 }
 
+.p-grey{
+    color:#2c2b2aaa;
+    font-size: small;
+}
+
 /* UserAccount.js */
 .userName{
     color: rgba(72, 34, 125, 0.778);
@@ -87,4 +93,5 @@ h1{
     color: rgba(255, 255, 255, 0.925);
     font-size: large;
 }
+
 

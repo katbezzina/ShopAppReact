@@ -19,6 +19,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const redirectTo = useNavigate();
   const [updatedUserName, setUpdatedUserName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function register(email, password) {
     console.log(email);
@@ -30,6 +31,7 @@ export function AuthProvider({ children }) {
         const user = userCredential.user;
         console.log(user);
         setUser(user);
+        setIsLoggedIn(true);
         redirectTo("/UserAccount");
       })
       .catch((error) => {
@@ -47,6 +49,7 @@ export function AuthProvider({ children }) {
         // Signed in
         const user = userCredential.user;
         setUser(user);
+        setIsLoggedIn(true);
         redirectTo("/UserAccount");
       })
       .catch((error) => {
@@ -59,19 +62,8 @@ export function AuthProvider({ children }) {
       });
   };
 
-  const checkIfUserIsLogged = () => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        setUser(user);
-        redirectTo("/");
-      } else {
-        setUser(null);
-      }
-    });
-  };
-
   const logout = () => {
+    setIsLoggedIn(false);
     signOut(auth)
       .then(() => {
         setUser(null);
@@ -110,8 +102,28 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    checkIfUserIsLogged();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+        setIsLoggedIn(true);
+        redirectTo("/");
+      } else {
+        setUser(null);
+      }
+    });
   }, []);
+
+  // const checkIfUserIsLogged = () => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       const uid = user.uid;
+  //       setUser(user);
+  //       redirectTo("/");
+  //     } else {
+  //       setUser(null);
+  //     }
+  //   });
+  // };
 
   // //only runs once
   // useEffect(() => {
@@ -135,6 +147,7 @@ export function AuthProvider({ children }) {
         logout,
         userUpdate,
         updatedUserName,
+        isLoggedIn,
         deleteYourUser,
       }}
     >

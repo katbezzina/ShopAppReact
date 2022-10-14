@@ -4,11 +4,16 @@ import { NavLink, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { BsDroplet, BsChatDots } from "react-icons/bs";
+import { BsDroplet, BsChatDots, BsFillCartFill } from "react-icons/bs";
 import { AiOutlineShop } from "react-icons/ai";
+import { MdAccountCircle } from "react-icons/md";
 import "../Style/Navbar.css";
 
-function navbar() {
+import { useAuth } from "../Context/AuthContext";
+
+const Navigation = () => {
+  const { user, logout } = useAuth();
+
   return (
     <Navbar collapseOnSelect expand="md" bg="light" sticky="top">
       <Container>
@@ -18,6 +23,7 @@ function navbar() {
             <BsDroplet />p
           </Navbar.Brand>
         </Link>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto collapseNavbar">
@@ -29,17 +35,45 @@ function navbar() {
             </NavLink>
           </Nav>
           <Nav className="navbarButtons">
-            <NavLink to="/Login" className="noUnderline loginButton">
-              Log In
-            </NavLink>
-            <NavLink to="/Register" className="noUnderline registerButton ">
-              Register
-            </NavLink>
+            <div>
+              {user ? (
+                <Nav className="navbarButtonsRow">
+                  <Link to="/UserAccount" className="userName">
+                    <MdAccountCircle />
+                    {user.displayName === null
+                      ? `${user.email}`
+                      : `${user.displayName}`}
+                  </Link>
+                  {"|"}
+                  <button>
+                    <BsFillCartFill />
+                  </button>
+                  {"|"}
+                  <Link to="/Login">
+                    <button
+                      className="noUnderline loginButton"
+                      onClick={logout}
+                    >
+                      Log out
+                    </button>
+                  </Link>
+                </Nav>
+              ) : (
+                <Nav className="navbarButtons">
+                  <Link to="/Login" className="noUnderline loginButton">
+                    login
+                  </Link>{" "}
+                  <Link to="/Register" className="noUnderline registerButton">
+                    register
+                  </Link>
+                </Nav>
+              )}
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
-export default navbar;
+export default Navigation;
