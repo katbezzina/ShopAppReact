@@ -43,7 +43,7 @@
 
 .purpleOutline{
     border-color: rgba(169, 108, 255, 0.566);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.791);
     color: rgb(169, 108, 255);
     padding: 10px;
     border-radius: 100px;
@@ -52,15 +52,15 @@
 
 .purpleFill{
     border-color: rgba(248, 247, 249, 0);
-    background-color:rgba(169, 108, 255, 0.589);;
-    color: white;
+    background-color:rgba(169, 108, 255, 0.847);;
+    color: rgba(255, 255, 255, 0.824);
     padding: 10px;
     border-radius: 250px;
 }
 
 .purpleFill:hover {
     color: rgba(169, 108, 255, 0.589);;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.779);
 }
 
 .purpleOutline:hover {
@@ -70,6 +70,7 @@
     border-color: rgba(114, 113, 113, 0.181);
     border-width: 2px;
     border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.548);
 }
 
 .cardOutline:hover{

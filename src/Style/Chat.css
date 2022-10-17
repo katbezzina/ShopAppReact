@@ -1,0 +1,40 @@
+h2{
+    color: rgba(72, 34, 125, 0.778);
+    font-size: x-large;
+    text-align: center;
+    padding: 20px;
+}
+
+.sendButton{
+    border-color: rgba(169, 108, 255, 0);
+    background-color: rgba(169, 108, 255, 0.566);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sendButton:hover{
+    box-shadow: 2px 4px rgba(169, 108, 255, 0.662)
+}
+
+.inputChat{
+    position: absolute;
+    bottom: 0;
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+}
+
+.mine{
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.chatBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.notmine{
+    justify-content: flex-start;
+    align-items: flex-start;
+}

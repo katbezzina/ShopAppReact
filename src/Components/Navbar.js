@@ -9,6 +9,7 @@ import { AiOutlineShop } from "react-icons/ai";
 import { MdAccountCircle } from "react-icons/md";
 import "../Style/Navbar.css";
 
+import Switch from "./Switch";
 import { useAuth } from "../Context/AuthContext";
 
 const Navigation = () => {
@@ -69,6 +70,7 @@ const Navigation = () => {
                 </Nav>
               )}
             </div>
+            <Switch />
           </Nav>
         </Navbar.Collapse>
       </Container>

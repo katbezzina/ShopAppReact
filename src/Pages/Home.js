@@ -11,8 +11,8 @@ const Home = () => {
     let searchedResult = fetchedData.filter((product) => {
       return product.title.toLowerCase().includes(inputValue);
     });
-    console.log("inputValue", inputValue);
-    console.log("searchedResult", searchedResult);
+    // console.log("inputValue", inputValue);
+    // console.log("searchedResult", searchedResult);
     setFilter(searchedResult);
   }
 

@@ -26,6 +26,7 @@
     border-style: dashed;
     border-color:rgba(78, 44, 125, 0.452);
     border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.548);
 }
 
 .backButton{
