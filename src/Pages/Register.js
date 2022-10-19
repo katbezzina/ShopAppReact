@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import GoogleButton from "react-google-button";
 import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -12,10 +13,17 @@ const Register = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { register } = useAuth();
+  const { register, googleSignIn } = useAuth();
   const [error, setError] = useState("");
 
-  console.log(error)
+
+    const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   async function handleSubmit(e) {
     //preventing form from refreshing
@@ -93,6 +101,7 @@ const Register = () => {
             Create New Account
             </button>
         </Form>
+        <GoogleButton onClick={handleGoogleSignIn} className="GoogleButton" />
         <hr />
         <div className="registerBox">
           <NavLink to="/Login">

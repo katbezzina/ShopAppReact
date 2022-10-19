@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import GoogleButton from "react-google-button";
 import { NavLink } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
@@ -12,12 +13,20 @@ import { useAuth } from "../Context/AuthContext";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, googleSignIn } = useAuth();
   const [isShown, setIsSHown] = useState(false);
   const [error, setError] = useState("");
 
   const togglePassword = () => {
     setIsSHown((isShown) => !isShown);
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   async function handleSubmit(e) {
@@ -85,6 +94,9 @@ const Login = () => {
             Login
           </button>
         </Form>
+        <div className="GoogleButton">
+          <GoogleButton onClick={handleGoogleSignIn} />
+        </div>
         <hr />
         <div className="registerBox">
           <NavLink to="/Register">

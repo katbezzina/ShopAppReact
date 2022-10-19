@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { useAuth } from "../Context/AuthContext";
 import {
   collection,
@@ -32,6 +32,7 @@ function Chat() {
       text: message,
       timestamp: new Date(),
       email: user.email,
+      userID: user.uid,
     };
     try {
       const docRef = await addDoc(collection(db, "messages"), messageObj);
@@ -42,6 +43,7 @@ function Chat() {
       console.log(e);
     }
     window.scrollTo(0, document.body.scrollHeight);
+    getMessages();
   };
 
   const getMessages = async () => {
@@ -49,7 +51,7 @@ function Chat() {
     const q = query(
       collection(db, "messages"),
       orderBy("timestamp", "asc"),
-      limitToLast(10)
+      limitToLast(6)
     );
 
     const querySnapshot = await getDocs(q);
@@ -59,7 +61,6 @@ function Chat() {
       arr.push(doc.data());
     });
     setMessages(arr);
-    getMessages();
   };
 
   useEffect(() => {
@@ -72,28 +73,31 @@ function Chat() {
         <BsChatDots /> with us,{" "}
         {user.displayName === null ? `${user.email}` : displayName}
       </h2>
-      {messages &&
-        messages.map((msg, index) => (
-          <div className="chatBox">
-            <div
-              key={index}
-              className={message.index === user.email ? "mine" : "notmine"}
-            >
-              <p>{msg.text}</p>
-              <p>
-                {user.displayName === null ? `${user.email}` : displayName} |{" "}
-                {msg.timestamp.toDate().toLocaleString("de")}
-              </p>
+      <div>
+        {messages &&
+          messages.map((msg, index) => (
+            <div className="chatBox" key={index}>
+              <ul className="listStyle">
+                <li className={msg.email === user.email ? "mine" : "notmine"}>
+                  <div>
+                    <div className="chatText">{msg.text}</div>
+                    <p className="subText">
+                      {msg.email} |{" "}
+                      {msg.timestamp.toDate().toLocaleString("de")}
+                    </p>
+                  </div>
+                </li>
+              </ul>
             </div>
-          </div>
-        ))}
+          ))}
+      </div>
       <InputGroup className="p-3 inputChat">
         <FormControl
           placeholder="Your message"
           aria-label="Your message"
           aria-describedby="basic-addon1"
           value={message}
-          onKeyDown={(e) => e.key === "Enter" && { handleMessageChange }}
+          onChange={handleMessageChange}
         />
         <button className="sendButton" onClick={sendMessage}>
           <TbSend />

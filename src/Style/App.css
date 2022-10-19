@@ -1,7 +1,17 @@
-#light {
+.Containerlight {
     background-color: white;
 }
 
-#dark {
-    background-color: rgb(60, 15, 100);
+.Containerdark{
+    background-color: rgba(50, 12, 82, 0.886);
+    min-height: 100vh;
+    height: auto;
+}
+
+.form-check-input:checked {
+    background-color:rgba(50, 12, 82, 0.886);
+}
+
+.form-check-input{
+    border-color: rgba(151, 121, 176, 0.886);
 }

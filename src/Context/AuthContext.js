@@ -6,6 +6,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -20,6 +22,11 @@ export function AuthProvider({ children }) {
   const redirectTo = useNavigate();
   const [updatedUserName, setUpdatedUserName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
 
   function register(email, password) {
     console.log(email);
@@ -149,6 +156,7 @@ export function AuthProvider({ children }) {
         updatedUserName,
         isLoggedIn,
         deleteYourUser,
+        googleSignIn,
       }}
     >
       {children}
