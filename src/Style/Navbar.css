@@ -69,3 +69,11 @@
     text-decoration: underline;
     color: rgb(90, 67, 123);
 }
+
+.addToCart:hover{
+    color: #a87f03c6;
+}
+
+.addToCart{
+    color: rgb(90, 67, 123);
+}

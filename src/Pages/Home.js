@@ -16,10 +16,14 @@ const Home = () => {
     setFilter(searchedResult);
   }
 
+  const addToCart = (fetchedData) => {
+    console.log(fetchedData);
+  };
+
   return (
     <div>
       <Search page="/" handleChange={handleChange} />
-      <ProductList />
+      <ProductList addToCart={addToCart} />
     </div>
   );
 };

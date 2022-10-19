@@ -4,7 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { BsDroplet, BsChatDots, BsFillCartFill } from "react-icons/bs";
+import { BsDroplet, BsChatDots, BsFillHandbagFill } from "react-icons/bs";
 import { AiOutlineShop } from "react-icons/ai";
 import { MdAccountCircle } from "react-icons/md";
 import "../Style/Navbar.css";
@@ -46,9 +46,9 @@ const Navigation = () => {
                       : `${user.displayName}`}
                   </Link>
                   {"|"}
-                  <button>
-                    <BsFillCartFill />
-                  </button>
+                  <Link to="/AddToCart" className="addToCart">
+                    <BsFillHandbagFill />
+                  </Link>
                   {"|"}
                   <Link to="/Login">
                     <button

@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import Row from "react-bootstrap/Row";
-import { BsFillHeartFill } from "react-icons/bs";
+import { BsHandbagFill } from "react-icons/bs";
 import "../Style/ProductList.css";
 import { ProductsContext } from "../Context/ProductsContext";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductList = () => {
   const { filter, fetchData } = useContext(ProductsContext);
@@ -41,9 +42,7 @@ const ProductList = () => {
                       View details
                     </button>
                   </Link>
-                  <button className="purpleFill">
-                    <BsFillHeartFill />
-                  </button>
+                  <AddToCartButton fetchData={fetchData} />
                 </div>
               </Card.Body>
             </Card>

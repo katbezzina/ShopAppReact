@@ -1,7 +1,7 @@
 import React from "react";
 
 function Logout() {
-  return <div>Logout</div>;
+  return <div>Are you sure you would like to log out? </div>;
 }
 
 export default Logout;
