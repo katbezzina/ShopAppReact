@@ -1,7 +1,7 @@
-import React from "react";
+// import ReadAddToCart from "../Components/ReadAddToCart";
 
 function AddToCart() {
-  return <div>{`$product.id`}</div>;
+  return <div>Add To Cart</div>;
 }
 
 export default AddToCart;

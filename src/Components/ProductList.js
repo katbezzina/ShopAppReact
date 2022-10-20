@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Card from "react-bootstrap/Card";
@@ -6,49 +5,52 @@ import Badge from "react-bootstrap/Badge";
 import Row from "react-bootstrap/Row";
 import { BsHandbagFill } from "react-icons/bs";
 import "../Style/ProductList.css";
-import { ProductsContext } from "../Context/ProductsContext";
 import AddToCartButton from "./AddToCartButton";
 
-const ProductList = () => {
-  const { filter, fetchData } = useContext(ProductsContext);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+const ProductList = ({ products, onProductAction }) => {
   return (
     <div>
       <Row className="cardGrid">
-        {filter ? (
-          filter.map(({ id, title, image, category, price }) => (
-            <Card key={id} style={{ width: "18rem" }} className="cardOutline">
-              <img
-                variant="top"
-                srcSet={image}
-                alt=""
-                className="imgSize"
-              ></img>
-              <Card.Body>
-                <Card.Title className="mediumText">{title}</Card.Title>
-                <Card.Text className="smallText">
-                  € {price.toFixed(2)}
-                </Card.Text>
-                <Badge pill bg="warning" className="pillBadge">
-                  {category}
-                </Badge>
-                <div className="listButton">
-                  <Link to={`${id}`}>
-                    <button className="purpleOutline" size="sm">
-                      View details
-                    </button>
-                  </Link>
-                  <AddToCartButton fetchData={fetchData} />
-                </div>
-              </Card.Body>
-            </Card>
-          ))
+        {products.length ? (
+          // .length to not render if length = 0
+          products.map((product) => {
+            const { id, image, title, category, price } = product;
+
+            return (
+              <Card key={id} style={{ width: "18rem" }} className="cardOutline">
+                <img
+                  variant="top"
+                  srcSet={image}
+                  alt=""
+                  className="imgSize"
+                ></img>
+                <Card.Body>
+                  <Card.Title className="mediumText">{title}</Card.Title>
+                  <Card.Text className="smallText">
+                    € {price.toFixed(2)}
+                  </Card.Text>
+                  <Badge pill bg="warning" className="pillBadge">
+                    {category}
+                  </Badge>
+                  <div className="listButton">
+                    <Link to={`${id}`}>
+                      <button className="purpleOutline" size="sm">
+                        View details
+                      </button>
+                    </Link>
+                    {onProductAction && (
+                      <AddToCartButton
+                        product={product}
+                        onClick={onProductAction}
+                      />
+                    )}
+                  </div>
+                </Card.Body>
+              </Card>
+            );
+          })
         ) : (
-          <p>Not found</p>
+          <p>Please wait to load data</p>
         )}
       </Row>
     </div>

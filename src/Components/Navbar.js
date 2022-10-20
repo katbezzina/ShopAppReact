@@ -10,6 +10,7 @@ import { MdAccountCircle } from "react-icons/md";
 import "../Style/Navbar.css";
 
 import Switch from "./Switch";
+import Logout from "./Logout";
 import { useAuth } from "../Context/AuthContext";
 
 const Navigation = () => {
@@ -50,14 +51,7 @@ const Navigation = () => {
                     <BsFillHandbagFill />
                   </Link>
                   {"|"}
-                  <Link to="/Login">
-                    <button
-                      className="noUnderline loginButton"
-                      onClick={logout}
-                    >
-                      Log out
-                    </button>
-                  </Link>
+                  <Logout />
                 </Nav>
               ) : (
                 <Nav className="navbarButtons">

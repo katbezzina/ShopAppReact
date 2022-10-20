@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import { useAuth } from "../Context/AuthContext";
+import { NavLink } from "react-router-dom";
 import "../Style/Navbar.css";
 
-function Logout(props) {
-  const { logout } = useAuth();
+function DeleteAccount(props) {
+  const { deleteYourUser } = useAuth();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <>
-      <button onClick={handleShow} className="noUnderline loginButton">
-        Logout
-      </button>
+      <Button variant="outline-light" onClick={handleShow} className="mb-4">
+        Delete your account
+      </Button>
 
       <Modal
         {...props}
@@ -25,20 +26,25 @@ function Logout(props) {
         onHide={handleClose}
       >
         <Modal.Header closeButton></Modal.Header>
-        <Modal.Body>Are you sure you would like to log out?</Modal.Body>
+        <Modal.Body>
+          Are you sure you would like to delete this account?
+        </Modal.Body>
         <Modal.Footer>
           <button onClick={handleClose} className="noUnderline registerButton">
             No
           </button>
-          <Link to="/Login">
-            <button onClick={logout} className="noUnderline loginButton">
-              Log out
+          <NavLink to="/Register">
+            <button
+              onClick={deleteYourUser}
+              className="noUnderline loginButton"
+            >
+              Yes, delete
             </button>
-          </Link>
+          </NavLink>
         </Modal.Footer>
       </Modal>
     </>
   );
 }
 
-export default Logout;
+export default DeleteAccount;

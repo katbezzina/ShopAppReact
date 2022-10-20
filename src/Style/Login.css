@@ -42,7 +42,7 @@
 
 .signupButton{
     border-color: rgba(169, 108, 255, 0.566);
-    background-color: rgba(255, 255, 255, 0.905);
+    background-color: rgba(255, 255, 255, 0.789);
     color: rgb(169, 108, 255);
     padding: 10px;
     border-radius: 10px;
@@ -56,7 +56,7 @@
 
 .registrationButton{
     border-color: rgba(169, 108, 255, 0.566);
-    background-color: rgba(255, 255, 255, 0.777);
+    background-color: rgba(255, 255, 255, 0.862);
     color: rgb(169, 108, 255);
     padding: 10px;
     margin-top: 15px;

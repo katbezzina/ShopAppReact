@@ -10,7 +10,7 @@ import ReactStars from "react-rating-stars-component";
 import ImageCarousel from "./ImageCarousel";
 import BackButton from "./BackButton";
 import Loading from "./Loading";
-import AddToCartButton from "./AddToCartButton";
+// import AddToCartButton from "./AddToCartButton";
 import "../Style/ProductModal.css";
 
 const ProductModal = () => {
@@ -57,7 +57,7 @@ const ProductModal = () => {
               </Col>
             </Row>
             <Container className="listButton">
-              <AddToCartButton />
+              <button className="purpleOutline">Add to bag</button>
               <button className="purpleFill">
                 <BsFillHeartFill />
               </button>

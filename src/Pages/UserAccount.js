@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Button from "react-bootstrap/Button";
 import { MdAccountCircle } from "react-icons/md";
 import { BsDroplet, BsChatDots } from "react-icons/bs";
 import "../Style/Login.css";
+import DeleteAccount from "../Components/DeleteAccount";
 
 const UserAccount = () => {
-  const { user, userUpdate, deleteYourUser, logout } = useAuth();
+  const { user, userUpdate, logout } = useAuth();
   const [name, setName] = useState("");
   const [displayName, setDisplayName] = useState(user.displayName);
 
@@ -28,9 +28,9 @@ const UserAccount = () => {
     }
   };
 
-  const handleRemove = (e) => {
-    deleteYourUser();
-  };
+  // const handleRemove = (e) => {
+  //   deleteYourUser();
+  // };
 
   return (
     <div className="LoginForm">
@@ -77,11 +77,12 @@ const UserAccount = () => {
           out
         </button>
       </NavLink>
-      <NavLink to="/Register">
+      {/* <NavLink to="/Register">
         <Button variant="outline-light" onClick={handleRemove} className="mb-4">
           Delete your Account
         </Button>
-      </NavLink>
+      </NavLink> */}
+      <DeleteAccount />
     </div>
   );
 };

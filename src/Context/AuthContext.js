@@ -1,5 +1,5 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -10,6 +10,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -36,6 +37,8 @@ export function AuthProvider({ children }) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        const userDocRef = doc(db, "favourites", user.uid);
+        setDoc(userDocRef, { cartlist: [] });
         console.log(user);
         setUser(user);
         setIsLoggedIn(true);
@@ -111,6 +114,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        const uid = user.id;
         setUser(user);
         setIsLoggedIn(true);
         redirectTo("/");

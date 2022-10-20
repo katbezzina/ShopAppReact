@@ -4,7 +4,7 @@ export const ProductsContext = createContext();
 
 export const ProductsContextProvider = (props) => {
   const [fetchedData, setFetchedData] = useState(null);
-  const [filter, setFilter] = useState([]);
+  const [searchProducts, setSearchProducts] = useState([]);
 
   const fetchData = () => {
     fetch("https://fakestoreapi.com/products")
@@ -15,7 +15,7 @@ export const ProductsContextProvider = (props) => {
       .then((data) => {
         const filteredProducts = data;
         setFetchedData(data);
-        setFilter(filteredProducts);
+        setSearchProducts(filteredProducts);
 
         // console.log("data", data);
       });
@@ -25,10 +25,10 @@ export const ProductsContextProvider = (props) => {
     <ProductsContext.Provider
       value={{
         fetchedData,
-        filter,
+        searchProducts,
         fetchData,
         setFetchedData,
-        setFilter,
+        setSearchProducts,
       }}
     >
       {props.children}
