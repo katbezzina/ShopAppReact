@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
-import { db } from "../firebase";
+import { doc, updateDoc, arrayUnion, FieldValue } from "firebase/firestore";
+import { db, app } from "../firebase";
 import { useAuth } from "../Context/AuthContext";
 import Search from "../Components/Search";
 import { useState } from "react";
@@ -27,16 +27,23 @@ const Home = () => {
 
   // adding to cart
 
-  const addProductToCart = async ({ product }) => {
+  const addProductToCart = async (product) => {
+    // console.log(product);
     const cartObj = {
       id: product.id,
       title: product.title,
+      image: product.image,
+      description: product.description,
+      price: product.price,
+      qty: 1,
+      // qty: FieldValue.increment(1),
     };
-    console.log("cartObj", cartObj);
 
     try {
       const cartlistRef = doc(db, "favourites", user.uid);
+      // const increment = FieldValue.increment(1);
       await updateDoc(cartlistRef, {
+        // cartlist: arrayUnion({ ...cartObj, qty: increment }),
         cartlist: arrayUnion({ cartObj }),
       });
     } catch (e) {
@@ -44,18 +51,18 @@ const Home = () => {
     }
   };
 
-  const addToCart = (fetchedData) => {
-    console.log(fetchedData);
-  };
-
   return (
     <div>
       <Search page="/" handleChange={handleChange} />
-      {/* products as a more generic term  */}
-      <ProductList
-        products={searchedResult}
-        onProductAction={addProductToCart}
-      />
+
+      {user === null ? (
+        <ProductList products={searchedResult} />
+      ) : (
+        <ProductList
+          products={searchedResult}
+          onProductAction={addProductToCart}
+        />
+      )}
     </div>
   );
 };

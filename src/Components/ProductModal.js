@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,8 +12,10 @@ import BackButton from "./BackButton";
 import Loading from "./Loading";
 // import AddToCartButton from "./AddToCartButton";
 import "../Style/ProductModal.css";
+import { useAuth } from "../Context/AuthContext";
 
 const ProductModal = () => {
+  const { user } = useAuth();
   let { id } = useParams();
   let [fetchedData, setFetchedData] = useState(null);
 
@@ -57,7 +59,15 @@ const ProductModal = () => {
               </Col>
             </Row>
             <Container className="listButton">
-              <button className="purpleOutline">Add to bag</button>
+              {user === null ? (
+                <Link to="/Login">
+                  <button className="purpleOutline">Add to bag</button>
+                </Link>
+              ) : (
+                <Link to="/AddToCart">
+                  <button className="purpleOutline">Add to bag</button>
+                </Link>
+              )}
               <button className="purpleFill">
                 <BsFillHeartFill />
               </button>

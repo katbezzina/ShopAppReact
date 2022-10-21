@@ -11,8 +11,8 @@ const ProductList = ({ products, onProductAction }) => {
   return (
     <div>
       <Row className="cardGrid">
+        {/* // .length to not render if length = 0 */}
         {products.length ? (
-          // .length to not render if length = 0
           products.map((product) => {
             const { id, image, title, category, price } = product;
 

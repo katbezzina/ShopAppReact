@@ -28,6 +28,22 @@
     font-size: small;
 }
 
+.rightText{
+    font-size: small;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    font-size: medium;
+    gap: 10px;
+}
+
+.qtyButtons{
+    background-color: rgba(202, 0, 0, 0.837);
+    border-color: rgb(169, 108, 255);
+    color: rgb(169, 108, 255);
+    border-radius: 10px;
+}
+
 .pillBadge {
     position: absolute;
     top: 10px;
