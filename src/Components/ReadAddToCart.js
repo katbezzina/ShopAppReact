@@ -32,12 +32,14 @@ function ReadAddToCart() {
   };
 
   // const deleteItems = async () => {
+  //   await deleteDoc(doc(db, "favourites", cartObj)
   //   const cartlistRef = doc(db, "favourites", user.uid);
   //   try {
   //     await updateDoc(cartlistRef, {
   //       cartObj: deleteField([]),
   //     });
   //   } catch (error) {}
+  //      console.log("items deleted")
   // };
 
   useEffect(() => {
