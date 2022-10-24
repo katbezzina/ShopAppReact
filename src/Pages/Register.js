@@ -93,6 +93,7 @@ const Register = () => {
               />
             </FloatingLabel>
           </Form.Group>
+           <p className="smallText white">Password must be at least 6 characters long</p>
           <button
             type="submit"
             // disabled={loading}
