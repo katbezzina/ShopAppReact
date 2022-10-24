@@ -1,5 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { doc, updateDoc, arrayUnion, FieldValue } from "firebase/firestore";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  FieldValue,
+  increment,
+} from "firebase/firestore";
 import { db, app } from "../firebase";
 import { useAuth } from "../Context/AuthContext";
 import Search from "../Components/Search";
@@ -8,7 +14,6 @@ import ProductList from "../Components/ProductList";
 import { ProductsContext } from "../Context/ProductsContext";
 
 const Home = () => {
-  // const { fetchedData, setFilter } = useContext(ProductsContext);
   const [inputValue, setInputValue] = useState("");
   const { searchProducts, fetchData } = useContext(ProductsContext);
   const { user } = useAuth();
@@ -22,7 +27,7 @@ const Home = () => {
   }
 
   let searchedResult = searchProducts.filter((product) => {
-    return product.title.toLowerCase().includes(inputValue);
+    return product.title.toLowerCase().includes(inputValue.toLowerCase());
   });
 
   // adding to cart
@@ -43,9 +48,11 @@ const Home = () => {
       const cartlistRef = doc(db, "favourites", user.uid);
       // const increment = FieldValue.increment(1);
       await updateDoc(cartlistRef, {
-        // cartlist: arrayUnion({ ...cartObj, qty: increment }),
-        cartlist: arrayUnion({ cartObj }),
+        cartlist: arrayUnion({ ...cartObj, qty: FieldValue.increment(1) }),
+        // cartlist: arrayUnion({ cartObj }),
       });
+      console.log(cartlistRef);
+      console.log(increment);
     } catch (e) {
       console.error("error", e);
     }
