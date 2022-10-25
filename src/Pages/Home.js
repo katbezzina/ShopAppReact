@@ -1,12 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import {
-  doc,
-  updateDoc,
-  arrayUnion,
-  FieldValue,
-  increment,
-} from "firebase/firestore";
-import { db, app } from "../firebase";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { db } from "../firebase";
 import { useAuth } from "../Context/AuthContext";
 import Search from "../Components/Search";
 import { useState } from "react";
@@ -46,13 +40,9 @@ const Home = () => {
 
     try {
       const cartlistRef = doc(db, "favourites", user.uid);
-      // const increment = FieldValue.increment(1);
       await updateDoc(cartlistRef, {
-        cartlist: arrayUnion({ ...cartObj, qty: FieldValue.increment(1) }),
-        // cartlist: arrayUnion({ cartObj }),
+        cartlist: arrayUnion({ cartObj }),
       });
-      console.log(cartlistRef);
-      console.log(increment);
     } catch (e) {
       console.error("error", e);
     }

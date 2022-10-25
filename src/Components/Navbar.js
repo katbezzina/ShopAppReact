@@ -14,7 +14,7 @@ import Logout from "./Logout";
 import { useAuth } from "../Context/AuthContext";
 
 const Navigation = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return (
     <Navbar collapseOnSelect expand="md" bg="light" sticky="top">

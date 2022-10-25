@@ -17,7 +17,13 @@ import { FaMinus } from "react-icons/fa";
 function ReadAddToCart() {
   const { user } = useAuth();
   const [items, setItems] = useState(null);
-
+  const [counter, setCounter] = useState(1);
+  const incrementCounter = () => setCounter(counter + 1);
+  const decrementCounter = () => {
+    if (counter > 1) {
+      setCounter(counter - 1);
+    }
+  };
   const getItems = async () => {
     const cartlistRef = doc(db, "favourites", user.uid);
     const docSnap = await getDoc(cartlistRef);
@@ -46,6 +52,10 @@ function ReadAddToCart() {
     getItems();
   }, [user]);
 
+  // if (counter <= 0) {
+  //   setCounter(0);
+  // }
+
   return (
     <div>
       <Row className="cardGrid">
@@ -72,12 +82,12 @@ function ReadAddToCart() {
                     € {item.cartObj.price}
                   </Card.Text>
                   <div className="rightText">
-                    <button className="qtyButtons">
+                    <button className="qtyButtons" onClick={decrementCounter}>
                       {" "}
                       <FaMinus />
                     </button>
-                    {item.cartObj.qty}
-                    <button className="qtyButtons">
+                    {counter}
+                    <button className="qtyButtons" onClick={incrementCounter}>
                       <BsPlusLg />
                     </button>
                   </div>
