@@ -9,12 +9,12 @@ import { ProductsContext } from "../Context/ProductsContext";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
-  const { searchProducts, fetchData } = useContext(ProductsContext);
+  const { searchProducts } = useContext(ProductsContext);
   const { user } = useAuth();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   function handleChange(event) {
     setInputValue(event.target.value);
