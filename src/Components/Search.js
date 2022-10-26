@@ -1,5 +1,4 @@
 import React from "react";
-// import SearchList from "./SearchList";
 import "../Style/Search.css";
 
 function Search({ handleChange }) {
@@ -10,7 +9,6 @@ function Search({ handleChange }) {
         placeholder="Search for..."
         onChange={handleChange}
         className="searchBar"
-        // value={searchInput}
       />
     </form>
   );

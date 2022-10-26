@@ -18,6 +18,8 @@ function ImageCarousel() {
 
   //   console.log(fetchedData);
 
+  // fetch could be put as a context
+
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((results) => results.json());

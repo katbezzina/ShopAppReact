@@ -38,6 +38,7 @@ const ProductList = ({ products, onProductAction }) => {
                         View details
                       </button>
                     </Link>
+                    {/* This allows the ProductList to be used with or without action buttons */}
                     {onProductAction && (
                       <AddToCartButton
                         product={product}

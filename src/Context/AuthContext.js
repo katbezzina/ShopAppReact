@@ -124,30 +124,6 @@ export function AuthProvider({ children }) {
     });
   }, []);
 
-  // const checkIfUserIsLogged = () => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       const uid = user.uid;
-  //       setUser(user);
-  //       redirectTo("/");
-  //     } else {
-  //       setUser(null);
-  //     }
-  //   });
-  // };
-
-  // //only runs once
-  // useEffect(() => {
-  //   //unsubscribe to unsubscribe/reverse
-  //   //firebaase's way to set user, setting current user to current user
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     //set user before set
-  //     setUser(user);
-  //     // setLoading(false);
-  //   });
-  //   return unsubscribe;
-  // }, []);
-
   return (
     <AuthContext.Provider
       value={{
