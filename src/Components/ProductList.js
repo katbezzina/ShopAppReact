@@ -18,12 +18,7 @@ const ProductList = ({ products, onProductAction }) => {
 
             return (
               <Card key={id} style={{ width: "18rem" }} className="cardOutline">
-                <img
-                  variant="top"
-                  srcSet={image}
-                  alt=""
-                  className="imgSize"
-                ></img>
+                <img srcSet={image} alt="" className="imgSize"></img>
                 <Card.Body>
                   <Card.Title className="mediumText">{title}</Card.Title>
                   <Card.Text className="smallText">
@@ -34,9 +29,7 @@ const ProductList = ({ products, onProductAction }) => {
                   </Badge>
                   <div className="listButton">
                     <Link to={`${id}`}>
-                      <button className="purpleOutline" size="sm">
-                        View details
-                      </button>
+                      <button className="purpleOutline">View details</button>
                     </Link>
                     {/* This allows the ProductList to be used with or without action buttons */}
                     {onProductAction && (
