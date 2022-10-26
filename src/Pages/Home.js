@@ -35,7 +35,6 @@ const Home = () => {
       description: product.description,
       price: product.price,
       qty: 1,
-      // qty: FieldValue.increment(1),
     };
 
     try {
